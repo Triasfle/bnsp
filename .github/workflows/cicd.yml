@@ -23,6 +23,6 @@ jobs:
             cd /home/ubuntu/bnsp
             git pull
             docker build -t bnspapp .
-            docker stop bnspapp || true
-            docker rm bnspapp || true
+            docker $(docker ps -aq) || true
+            docker rm $(docker ps -aq) || true
             docker run -d -p 80:3000 bnspapp
